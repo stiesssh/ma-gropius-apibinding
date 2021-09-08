@@ -14,11 +14,7 @@ If you actually want to generate them yourself, keep reading :)
 ## Step 0 : prepare
 Install [GraphQLJavaGen](https://github.com/Shopify/graphql_java_gen), as described in their [README](https://github.com/Shopify/graphql_java_gen/tree/163f64bebb5877044010f0fb4b3a5d03d258421f#installation).
 
-Somehow is works better, when adding a `source` as well...?
-```
-source 'https://rubygems.org'
-gem "graphql_java_gen"
-```
+Or just use the `Gemfile` that is already in this repository and do `bundle` in root of this repository. 
 
 ## Step 1 : get input
 Get the `graphql.schema` of the Gropius Backend's repository and create an introspection json. 
@@ -34,7 +30,7 @@ Wrap the introspection json into `{ 'data':` and `}` and save it.
 ## Step 2 : generate
 Now you can run the generation: 
 ```
-ruby internalGenerate.rb "<wrapped-introspection-json.json>" "<target folder>"
+ruby generate.rb "<wrapped-introspection-json.json>" "<target folder>"
 ```
 
 Currently the `package_name` of the generated output is set to ` "de.unistuttgart.gropius.api"` which is where the Thesis' Backend expects the API Bindings at.
